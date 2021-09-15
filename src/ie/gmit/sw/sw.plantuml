@@ -1,0 +1,343 @@
+@startuml
+
+title __SW's Class Diagram__\n
+
+  namespace ie.gmit.sw {
+    class ie.gmit.sw.Database {
+        - db : Map<Language, Map<Integer, LanguageEntry>>
+        + add()
+        + getLanguage()
+        + getTop()
+        + resize()
+        + toString()
+        - getLanguageEntries()
+        - getOutOfPlaceDistance()
+    }
+  }
+  
+
+  namespace ie.gmit.sw {
+    class ie.gmit.sw.Database.OutOfPlaceMetric {
+        - distance : int
+        + OutOfPlaceMetric()
+        + compareTo()
+        + getAbsoluteDistance()
+        + getLanguage()
+        + toString()
+    }
+  }
+  
+
+  namespace ie.gmit.sw {
+    enum Language {
+'      Achinese
+'      Afrikaans
+'      Albanian
+'      AlemannicGerman
+'      Amharic
+'      Arabic
+'      Aragonese
+'      Armenian
+'      Aromanian
+'      Arpitan
+'      Assamese
+'      Asturian
+'      Avar
+'      Aymara
+'      Azerbaijani
+'      Banjar
+'      Banyumasan
+'      Bashkir
+'      Basque
+'      Bavarian
+'      Belarusian
+'      BelarusianTaraschkewiza
+'      Bengali
+'      Bhojpuri
+'      Bishnupriya
+'      Bokm
+'      Bosnian
+'      Breton
+'      Bulgarian
+'      Burmese
+'      Buryat
+'      Cantonese
+'      Catalan
+'      Cebuano
+'      CentralBikol
+'      CentralKhmer
+'      CentralKurdish
+'      Chavacano
+'      Chechen
+'      Cherokee
+'      Chuvash
+'      ClassicalNahuatl
+'      Cornish
+'      Corsican
+'      CrimeanTatar
+'      Croatian
+'      Czech
+'      Danish
+'      Dhivehi
+'      Dimli
+'      Doteli
+'      Dutch
+'      EasternMari
+'      EgyptianArabic
+'      Emilian
+'      English
+'      Erzya
+'      Esperanto
+'      Estonian
+'      Extremaduran
+'      Faroese
+'      FijiHindi
+'      Finnish
+'      French
+'      Friulian
+'      Gagauz
+'      Galician
+'      Georgian
+'      German
+'      Gilaki
+'      Guarani
+'      Gujarati
+'      HaitianCreole
+'      HakkaChinese
+'      Hausa
+'      Hebrew
+'      Hindi
+'      Hungarian
+'      Icelandic
+'      Ido
+'      Igbo
+'      Iloko
+'      Indonesian
+'      Interlingua
+'      Interlingue
+'      Irish
+'      Italian
+'      JamaicanPatois
+'      Japanese
+'      Javanese
+'      Kabardian
+'      Kabyle
+'      Kannada
+'      KarachayBalkar
+'      Karakalpak
+'      Kashubian
+'      Kazakh
+'      Kinyarwanda
+'      Kirghiz
+'      Komi
+'      KomiPermyak
+'      Konkani
+'      Korean
+'      Kurdish
+'      Ladino
+'      Lao
+'      Latgalian
+'      Latin
+'      Latvian
+'      Lezghian
+'      Ligurian
+'      Limburgan
+'      Lingala
+'      LiteraryChinese
+'      Lithuanian
+'      LivviKarelian
+'      Lojban
+'      Lombard
+'      LowGerman
+'      LowerSorbian
+'      Luganda
+'      Luxembourgish
+'      Macedonian
+'      Maithili
+'      Malagasy
+'      Malay
+'      Malayalam
+'      Maltese
+'      Manx
+'      Maori
+'      Marathi
+'      Mazanderani
+'      MinDong
+'      MinNanChinese
+'      Minangkabau
+'      Mingrelian
+'      Mirandese
+'      ModernGreek
+'      Moksha
+'      Mongolian
+'      Narom
+'      Navajo
+'      Neapolitan
+'      Nepali
+'      Newari
+'      NorthernLuri
+'      NorthernSami
+'      NorthernSotho
+'      NorwegianNynorsk
+'      Occitan
+'      OldEnglish
+'      Oriya
+'      Oromo
+'      Ossetian
+'      PalatineGerman
+'      Pampanga
+'      Pangasinan
+'      Panjabi
+'      Papiamento
+'      PennsylvaniaGerman
+'      Persian
+'      Picard
+'      Polish
+'      Portuguese
+'      Pushto
+'      Quechua
+'      Ripuarisch
+'      Romanian
+'      Romansh
+'      Russian
+'      Rusyn
+'      Samogitian
+'      Sanskrit
+'      Sardinian
+'      Saterfriesisch
+'      Scots
+'      ScottishGaelic
+'      Serbian
+'      SerboCroatian
+'      Shona
+'      Sicilian
+'      Silesian
+'      Sindhi
+'      Sinhala
+'      Slovak
+'      Slovene
+'      Somali
+'      SouthAzerbaijani
+'      Spanish
+'      Sranan
+'      StandardChinese
+'      Sundanese
+'      Swahili
+'      Swedish
+'      Tagalog
+'      Tajik
+'      Tamil
+'      Tarantinodialect
+'      Tatar
+'      Telugu
+'      Tetum
+'      Thai
+'      Tibetan
+'      Tongan
+'      Tswana
+'      Tulu
+'      Turkish
+'      Turkmen
+'      Tuvan
+'      Udmurt
+'      Uighur
+'      Ukrainian
+'      UpperSorbian
+'      Urdu
+'      Uzbek
+'      Venetian
+'      Veps
+'      Vietnamese
+'      Vlaams
+'      Volapk
+'      Vulro
+'      Walloon
+'      Waray
+'      Welsh
+'      WestLowGerman
+'      WesternFrisian
+'      WesternMari
+'      WesternPanjabi
+'      Wolof
+'      WuChinese
+'      Xhosa
+'      Yakut
+'      Yiddish
+'      Yoruba
+'      Zeeuws
+      language
+    }
+  }
+
+
+  namespace ie.gmit.sw {
+    class ie.gmit.sw.LanguageEntry {
+        - frequency : int
+        - kmer : int
+        - rank : int
+        + LanguageEntry()
+        + compareTo()
+        + getFrequency()
+        + getKmer()
+        + getRank()
+        + setFrequency()
+        + setKmer()
+        + setRank()
+        + toString()
+    }
+  }
+  
+
+  namespace ie.gmit.sw {
+    class ie.gmit.sw.Parser {
+        - file : String
+        - k : int
+        + Parser()
+        {static} + main()
+        + run()
+        + setDb()
+        - parse()
+    }
+  }
+  
+
+  namespace ie.gmit.sw {
+    class ie.gmit.sw.Request {
+        ~ jobnum : String
+        ~ query : String
+    }
+  }
+  
+
+  namespace ie.gmit.sw {
+    class ie.gmit.sw.ServiceHandler {
+        - f : File
+        - inQueue : List<Request>
+        {static} - jobNumber : long
+        - languageDataSet : String
+        - outQueue : Map<String, Language>
+        + doGet()
+        + doPost()
+        + init()
+    }
+  }
+  
+
+  ie.gmit.sw.Database +-down- ie.gmit.sw.Database.OutOfPlaceMetric
+  ie.gmit.sw.Database.OutOfPlaceMetric .up.|> java.lang.Comparable
+  ie.gmit.sw.Database.OutOfPlaceMetric o-- ie.gmit.sw.Language : lang
+  ie.gmit.sw.LanguageEntry .up.|> java.lang.Comparable
+  ie.gmit.sw.Parser .up.|> java.lang.Runnable
+  ie.gmit.sw.Parser -up-|> java.awt.Component
+  ie.gmit.sw.Parser o-- ie.gmit.sw.Database : db
+  ie.gmit.sw.ServiceHandler -up-|> javax.servlet.http.HttpServlet
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
